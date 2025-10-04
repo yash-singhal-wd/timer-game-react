@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function Player() {
+  const playerNameInputRef = useRef();
   //state related stuff
   const [enteredName, setEnteredName] = useState("");
-  function handleNameChange(e){
-    setEnteredName(e.target.value);
+  function handleSubmit() {
+    setEnteredName(playerNameInputRef.current.value);
+    playerNameInputRef.current.value = "";
   }
   //derived state stuff
 
@@ -14,8 +16,8 @@ export default function Player() {
     <section id="player">
       <h2>Welcome {playerName}</h2>
       <p>
-        <input value={enteredName} type="text" onChange={handleNameChange}/>
-        <button>Set Name</button>
+        <input ref={playerNameInputRef} type="text"/>
+        <button onClick={handleSubmit}>Set Name</button>
       </p>
     </section>
   );
