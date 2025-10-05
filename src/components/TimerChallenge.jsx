@@ -12,6 +12,10 @@ export default function TimerChallenge({title, targetTime}) {
             setTimerStarted(false);
         }, targetTime*1000);
     }
+
+    function handleStop(){
+        
+    }
     //conditional components
     const startLabel = timerStarted ? "Stop Challenge" : "Start Challenge";
     const timerLabel = timerStarted ?  "Timer is Running..." : timerExpired ? "Ha ha ha!" : undefined;
